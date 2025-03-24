@@ -1,0 +1,49 @@
+﻿@using NugetApiModelsVCR
+@model List<Empleado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Empleados</h1>
+
+
+<form method="post" class="mb-3">
+    <div class="mb-3">
+        <label for="Oficio" class="form-label">Oficio</label>
+        <select id="Oficio" name="Oficio" class="form-control">
+            <option value="all">TODOS</option>
+            @foreach (var oficio in ViewBag.Oficios)
+            {
+                <option value="@oficio">@oficio</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Apellido</th>
+            <th>Oficio</th>
+            <th>Departamento</th>
+            <th>Salario</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var empleado in Model)
+        {
+            <tr>
+                <td>@empleado.IdEmpleado</td>
+                <td>@empleado.Apellido</td>
+                <td>@empleado.Oficio</td>
+                <td>@empleado.Departamento</td>
+                <td>@empleado.Salario</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
